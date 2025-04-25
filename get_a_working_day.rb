@@ -1,13 +1,6 @@
-require "date"
+#!/usr/bin/env ruby
 
-def date_calc_minus(number)
-  d = Date.today
-  number.times do
-    d -= 1
-    d -= 2 if d.sunday?
-  end
-  d
-end
+require "date"
 
 holiday_csv = 'holiday.csv'
 sdate = ARGV[0].to_s
@@ -26,7 +19,7 @@ def working?(datum)
   wochentag = datum.strftime('%a')
   # Sunday = zero:
   if tag == 0 || tag == 6
-    puts "is weekend ... #{wochentag} "
+    puts " ... #{wochentag} "
     return 1
   else
     puts "Finaly: a workingday: #{wochentag}"
@@ -45,7 +38,7 @@ def holiday?(datum,csv)
     f.each_line do |line|
       if line.include?(theDate.to_s)
       # if line =~ /#{Regexp.escape(theDate)}/
-        # puts "FOUND"
+        puts "FOUND: #{line}"
         found = 0
       end
     end  
@@ -55,31 +48,41 @@ end
 
 
 def find_next_working_day(datum,file)
-  if ( (working?(datum) == 0) && (holiday?(datum,file) == 1) )
-    # puts  "#{datum} : Workingday and not a Holiday"
+  puts "calling recursionsFunktion ... mit #{datum}"
+  if ( (working?(datum) == 0) && (holiday?(datum,file) == 1))
+    puts "#{datum}"
     return 0
   else
-    datum += 1
-    find_next_working_day(datum,file)
+    dp = datum + 1
+    puts "erhoehe Datum auf #{dp}"
+    find_next_working_day(dp,file)
   end
-  return 1
 end
+
+
 
 
 d = Date.parse(sdate)
 d = Date.new(d.year,d.mon,d.mday)
 d += plus
-# puts "Is " + d.to_s + " a working day?"
+puts "Is " + d.to_s + " a working day?"
 
-#working?(d)
 
-#if holiday?(d,holiday_csv) == 0
-#  puts "ist ein H"
-#else
-#  puts "ist kein H"
-#end
+x = working?(d)
+puts x
+puts "-" * 20
 
-if find_next_working_day(d, holiday_csv) == 0
-  puts  "#{d} : Workingday and not a Holiday :D "
+y = holiday?(d,holiday_csv)
+puts y
+puts "-" * 20
+
+
+if holiday?(d,holiday_csv) == 0
+  puts "ist ein Feiertag"
+else
+  puts "#{d} ist kein Feiertag"
 end
+
+find_next_working_day(d, holiday_csv)
+
 
