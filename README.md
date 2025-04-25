@@ -2,8 +2,9 @@
 
 ## Topic:
 
-This code takes a date, adds an offset and is calculating, of the result is a workingday or not a holiday.
-If not, it returns the next available workingday.
+This code takes a date, adds an offset and is calculating if the result 
+is a workingday **and** not a holiday.
+If not, it hopefully returns the next available workingday.
 
 ## Usage:
 
@@ -17,6 +18,3 @@ get_a_working_day.rb YYYYMMDD offset
 get_a_working_day.rb 20250810 5
 ~~~
 
-
-
-.
