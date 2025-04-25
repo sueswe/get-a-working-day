@@ -37,8 +37,6 @@ def holiday?(datum,csv)
   File.open(csv) do |f|
     f.each_line do |line|
       if line.include?(theDate.to_s)
-      # if line =~ /#{Regexp.escape(theDate)}/
-        # puts "FOUND: #{line}"
         found = 0
       end
     end  
@@ -48,14 +46,13 @@ end
 
 
 def find_next_working_day(datum,file)
-  # puts "calling recursionsFunktion ... mit #{datum}"
+  # puts "calling function with #{datum}"
   if ( (working?(datum) == 0) && (holiday?(datum,file) == 1))
     dow = datum.strftime('%a')
     puts "#{dow}, #{datum}"
     return 0
   else
     dp = datum + 1
-    # puts "erhoehe Datum auf #{dp}"
     find_next_working_day(dp,file)
   end
 end
@@ -64,22 +61,5 @@ end
 d = Date.parse(sdate)
 d = Date.new(d.year,d.mon,d.mday)
 d += plus
-# puts "Is " + d.to_s + " a working day?"
-
-#x = working?(d)
-#puts x
-#puts "-" * 20
-
-#y = holiday?(d,holiday_csv)
-#puts y
-#puts "-" * 20
-
-#if holiday?(d,holiday_csv) == 0
-#  puts "ist ein Feiertag"
-#else
-#  puts "#{d} ist kein Feiertag"
-#end
 
 find_next_working_day(d, holiday_csv)
-
-
