@@ -2,7 +2,10 @@
 
 require "date"
 
+# FIXME: read a config
 holiday_csv = 'holiday.csv'
+
+
 sdate = ARGV[0].to_s
 if sdate.length != 8
   puts "argv0: invalid length."
