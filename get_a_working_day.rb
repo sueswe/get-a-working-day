@@ -10,7 +10,10 @@ if sdate.length != 8
 end
 
 plus = ARGV[1].to_i
-
+if plus == 0
+  puts "Missing offset"
+  exit(2)
+end
 
 # returns 0 when workingday,
 # returns 1 when weekend
