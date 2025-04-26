@@ -9,6 +9,7 @@ holiday_csv = 'holiday.csv'
 sdate = ARGV[0].to_s
 if sdate.length != 8
   puts "argv0: invalid length."
+  puts "Usage: get_a_workings_day Date(YYYYMMDD) Offset(N)"
   exit(2)
 end
 
@@ -17,6 +18,8 @@ if plus == 0
   puts "Missing offset"
   exit(2)
 end
+
+
 
 # returns 0 when workingday,
 # returns 1 when weekend
@@ -62,6 +65,7 @@ def find_next_working_day(datum,file)
     find_next_working_day(dp,file)
   end
 end
+
 
 
 d = Date.parse(sdate)
