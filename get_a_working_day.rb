@@ -7,9 +7,10 @@ holiday_csv = 'holiday.csv'
 
 
 sdate = ARGV[0].to_s
-if sdate.length != 8
+
+if sdate.length != 10
   puts "argv0: invalid length."
-  puts "Usage: get_a_workings_day Date(YYYYMMDD) Offset(N)"
+  puts "Usage: get_a_workings_day Date(YYYY-MM-DD) Offset(N)"
   exit(2)
 end
 
