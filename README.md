@@ -1,4 +1,4 @@
-# README: looking for the next working after add a given (positiv) offset
+# README: looking for the next workingday after adding a given (positiv) offset (days)
 
 ## Topic:
 
