@@ -1,20 +1,20 @@
-# README: looking for the next working day with a given offset
+# README: looking for the next working after add a given (positiv) offset
 
 ## Topic:
 
-This code takes a date, adds an offset and is calculating if the result 
+This code takes a date, adds an offset and calculates if the result 
 is a workingday **and** not a holiday.
 If not, it hopefully returns the next available workingday.
 
 ## Usage:
 
 ~~~sh
-get_a_working_day.rb YYYYMMDD offset
+get_a_working_day.rb YYYY-MM-DD offset
 ~~~
 
 ## Example:
 
 ~~~sh
-get_a_working_day.rb 20250810 5
+get_a_working_day.rb 2025-08-10 5
 ~~~
 
