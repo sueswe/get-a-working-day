@@ -1,5 +1,8 @@
 # README: looking for the next workingday after adding a given (positiv) offset (days)
 
+
+See also Go-version : https://github.com/sueswe/getNextWorkingday-go
+
 ## Topic:
 
 This code takes a date, adds an offset and calculates if the result 
